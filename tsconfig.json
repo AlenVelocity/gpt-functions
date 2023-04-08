@@ -1,18 +1,24 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,            
-    "target": "ES6",                                
-    "module": "ES2022",                           
+    "target": "es6",
     "lib": [
-      "ESNext"
-    ],                                   
-    "outDir": "./build",                    
-    "strict": true,                                
-    "esModuleInterop": true,                        
-    "skipLibCheck": true,                          
-    "forceConsistentCasingInFileNames": true        
+      "ESNext",
+      "DOM"
+    ],                         
+    "module": "commonjs",
+    "declaration": true,                     
+    "outDir": "./build",                        
+    "resolveJsonModule": true,
+    "strict": true,                           
+    "esModuleInterop": true,                  
+    "skipLibCheck": true,                     
+    "forceConsistentCasingInFileNames": true  
   },
   "include": [
     "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "tests/**/*"
   ]
 }
