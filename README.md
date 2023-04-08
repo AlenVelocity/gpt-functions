@@ -5,7 +5,7 @@ Essentially Magic
 ## Installation
 
 ```shell
-npm install openai
+npm install gpt-functions
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ npm install openai
 ### **GPTFunctions.prototype.getResult()**
 
 ```js
-import { GPTFunctions } from 'openai'
+import { GPTFunctions } from 'gpt-functions'
 
 const API_KEY = 'your-openai-api-key-here'
 const gpt = new GPTFunctions(API_KEY)
