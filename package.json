@@ -24,11 +24,14 @@
   "author": "Alen Yohannan",
   "license": "MIT",
   "devDependencies": {
+    "@types/common-tags": "^1.8.1",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
-    "eslint": "^8.38.0"
+    "eslint": "^8.38.0",
+    "prettier": "^2.8.7"
   },
   "dependencies": {
+    "common-tags": "^1.8.2",
     "openai": "^3.2.1"
   }
 }
