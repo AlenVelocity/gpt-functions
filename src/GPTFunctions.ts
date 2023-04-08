@@ -43,7 +43,7 @@ export type CreateFucntionOptions<T> = {
     /**
      * Description of the function being defined
      */
-    description: string
+    desc: string
     /**
      * The name of the OpenAI API model to use
      * @default 'gpt-3.5-turbo'
@@ -91,7 +91,7 @@ export class GPTFunctions {
                 }
             ]
         })
-        return postProcess(response.data.choices[0].message)
+        return postProcess(response.data.choices[0].message?.content)
     }
 
     /**
@@ -101,7 +101,7 @@ export class GPTFunctions {
      */
     public createFunction = async <T extends () => unknown>({
         func,
-        description,
+        desc,
         model = 'gpt-3.5-turbo',
         evaluate = Function as unknown as Required<CreateFucntionOptions<T>>['evaluate']
     }: CreateFucntionOptions<T>): Promise<T> => {
@@ -110,11 +110,11 @@ export class GPTFunctions {
             messages: [
                 {
                     role: 'system',
-                    content: getContentString(func, description, 'create')
+                    content: getContentString(func, desc, 'create')
                 },
                 {
                     role: 'user',
-                    content: description
+                    content: desc
                 }
             ],
             temperature: 0
