@@ -50,7 +50,7 @@ The result of executing the code is an array of arrays, where each sub-array con
 ### **GPTFunctions.prototype.createFunction()**
 
 ```js
-import { GPTFunctions } from 'openai'
+import { GPTFunctions } from 'gpt-functions'
 
 const API_KEY = 'your-openai-api-key-here'
 const gpt = new GPTFunctions(API_KEY)
