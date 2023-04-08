@@ -1,0 +1,31 @@
+{
+  "name": "gpt-functions",
+  "version": "0.0.1",
+  "description": "Never code again",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "lint": "eslint src/**/*.ts",
+    "fmt": "prettier --write src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/alenvelocity/gpt-functions"
+  },
+  "keywords": [
+    "gpt",
+    "openai",
+    "chatgpt",
+    "gpt4",
+    "javascript",
+    "typescript",
+    "no-code"
+  ],
+  "author": "Alen Yohannan",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "eslint": "^8.38.0"
+  }
+}

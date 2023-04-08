@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,            
+    "target": "ES6",                                
+    "module": "ES2022",                           
+    "lib": [
+      "ESNext"
+    ],                                   
+    "outDir": "./build",                    
+    "strict": true,                                
+    "esModuleInterop": true,                        
+    "skipLibCheck": true,                          
+    "forceConsistentCasingInFileNames": true        
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
