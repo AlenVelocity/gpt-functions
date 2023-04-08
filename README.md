@@ -1,6 +1,6 @@
 # GPTFunctions
 
-This is an npm package that provides a set of functions to interact with OpenAI's API. It provides two functions: getResult and createFunction.
+Essentially Magic
 
 ## Installation
 
