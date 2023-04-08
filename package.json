@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "Never code again",
   "main": "build/index.js",
+  "files": [
+    "build/**/*"
+  ],
+  "types": "./build/index.d.ts",
   "scripts": {
     "build": "tsc -p .",
     "lint": "eslint src/**/*.ts",
