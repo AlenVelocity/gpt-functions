@@ -91,6 +91,6 @@ The result of executing the code is an array of arrays, where each sub-array con
 
 ## Contribution and Acknowledgments
 
-Thank you for your interest in contributing to this project. If you find any issues or have any suggestions for improvement, please feel free to open an issue or a pull request on our GitHub repository.
+If you find any issues or have any suggestions for improvement, please feel free to open an issue or a pull request.
 
-This project was made possible thanks to the [Open AI Api](openai.com)
+This project was made possible thanks to the [OpenAI API](openai.com)
