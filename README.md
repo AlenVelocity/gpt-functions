@@ -1,6 +1,13 @@
+<div align=center>
+
 # GPTFunctions
 
-### **Convert Raw text into actual Javascript Functions**
+### **Convert raw text into actual Javascript Functions**
+
+
+[![NPM](https://img.shields.io/npm/l/gpt-functions?style=flat-square&label=License)](https://github.com/AlenVelocity/gpt-functions/blob/master/LICENSE) [![CodeFactor](https://img.shields.io/codefactor/grade/github/AlenVelocity/gpt-functions?style=flat-square&label=Code%20Quality)](https://www.codefactor.io/repository/github/AlenVelocity/gpt-functions) [![NPM](https://img.shields.io/npm/dw/gpt-functions?style=flat-square&label=Downloads)](https://npmjs.com/package/gpt-functions)
+
+</div>
 
 ## Installation
 
