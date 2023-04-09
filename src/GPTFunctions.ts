@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi } from 'openai'
-import { cleanCode, getContentString } from './utils'
+import { cleanCode, getContentString, getDefaultCreateOptions } from './utils'
 
 /**
  * Options for getting a result from the OpenAI API
@@ -51,6 +51,7 @@ export type CreateFucntionOptions<T> = {
     model?: string
     /**
      * A function to evaluate the function definition
+     * @default Function (Function constructor)
      */
     evaluate?: (...args: string[]) => T
 }
@@ -66,7 +67,7 @@ export class GPTFunctions {
     }
 
     /**
-     *  Generate the result of calling a function using OpenAI's API.
+     *  Generate the result of calling a function
      *  @param {ResOptions} options - The options for generating the result.
      *  @returns {Promise<T>} - A promise that resolves to the result of calling the function.
      *  @template T
@@ -95,16 +96,13 @@ export class GPTFunctions {
     }
 
     /**
-     *  Generate a function using OpenAI's API.
+     *  Generate a function using inly it's description
      *  @param {CreateFucntionOptions} options - The options for generating the function.
      *  @returns {Promise<T>} - A promise that resolves to the generated function.
      */
-    public createFunction = async <T extends () => unknown>({
-        func,
-        desc,
-        model = 'gpt-3.5-turbo',
-        evaluate = Function as unknown as Required<CreateFucntionOptions<T>>['evaluate']
-    }: CreateFucntionOptions<T>): Promise<T> => {
+    public createFunction = async <T extends () => unknown>(options: CreateFucntionOptions<T> | string): Promise<T> => {
+        if (typeof options === 'string') options = getDefaultCreateOptions(options)
+        const { model, func, desc, evaluate } = options as Required<CreateFucntionOptions<T>>
         const response = await this.openai.createChatCompletion({
             model,
             messages: [
