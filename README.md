@@ -1,6 +1,6 @@
 # GPTFunctions
 
-Essentially Magic
+### **Convert Raw text into actual Javascript Functions**
 
 ## Installation
 
@@ -10,19 +10,37 @@ npm install gpt-functions
 
 ## Usage
 
-### **GPTFunctions.prototype.createFunction()**
+### Initialiaze the GPT Functions class
 
 ```js
 import { GPTFunctions } from 'gpt-functions'
 
 const API_KEY = 'your-openai-api-key-here'
 const gpt = new GPTFunctions(API_KEY)
+```
 
+### **.createFunction()**
+
+#### Example Usage
+
+```js
+const celsiusToFahrenheit = await gpt.createFunction('convert the given temperature from Celsius to Fahrenheit')
+
+console.log(celsiusToFahrenheit(25))
+console.log(celsiusToFahrenheit(10))
+```
+**Output**
+```js
+77
+50
+```
+
+#### Using the Options Object (Recommended way)
+```js
 const permutations = await gpt.createFunction({
     func: '(array) => array',
-    desc: 'Return all permutations of the passed array',
-    model: 'gpt-3.5-trubo'
-}
+    desc: 'Return all permutations of the passed array'
+})
 
 console.log(permutations([1,2,3]))
 ```
@@ -39,32 +57,27 @@ console.log(permutations([1,2,3]))
 ]
 ```
 
-GPTFunctions.prototype.createFunction() is a function that takes an object with the following properties as its parameter:
+**⚠️ WARNING ⚠️**
+> NEVER PASS RAW USER INPUT WITHOUT VALIDATING IT FIRST. GPTFUNCTIONS USES THE JS FUNCTION CONSTRUCTOR, WHICH CAN EXECUTE ARBITRARY CODE. AN ATTACKER COULD EXPLOIT THIS TO RUN MALICIOUS CODE ON YOUR SYSTEM. ALWAYS VALIDATE USER INPUT AND SANITIZE IT BEFORE PASSING IT
 
-    func: a string that represents the code you want to execute
-    desc: a string that describes what the code does.
-    model: the name of the OpenAI model you want to use to execute the code.
-    evaulate: a function evaluates the string to a an actual function `Default: Function()`
+.createFunction() is a method that takes a string as the functio description or an object with the following properties as its parameter:
 
-The createFunction() method returns a function that can be called with arguments to execute the code provided in the func property.
+    func: a string that represents the type of the fucntion
+    desc: a string that describes what the code does
+    model: the name of the OpenAI model you want to use to execute the code
+    evaulate: a function evaluates the string to a an actual function `Default: Function Constructor`
 
-In the example provided, the createFunction() function is used to create a function that returns all permutations of a given array using the OpenAI gpt-3.5-turbo model. The output is logged to the console using console.log().
+The createFunction() method returns a function that can be called with arguments to execute the code provided in the `func` property.
 
-Note that the createFunction() function does not execute the code immediately, but instead returns a function that can be used to execute the code later. This can be useful if you need to execute the same code multiple times with different arguments.
+Note that the createFunction() function does not execute the code immediately, but instead returns a function that can be used to execute the code later
 
 ### **GPTFunctions.prototype.getResult()**
 
 ```js
-import { GPTFunctions } from 'gpt-functions'
-
-const API_KEY = 'your-openai-api-key-here'
-const gpt = new GPTFunctions(API_KEY)
-
 const result = await gpt.getResult({
     func: '(array, array) => array',
     args: [['a', 'b', 'c'], ['x', 'y', 'z']],
-    desc: 'Creates an array of arrays, grouping the elements of each input array based on their index.',
-    model: 'gpt-3.5-turbo'
+    desc: 'Creates an array of arrays, grouping the elements of each input array based on their index.'
 })
 
 console.log(result)
@@ -77,17 +90,13 @@ console.log(result)
 
 GPTFunctions.prototype.getResult() is a function that takes an object with the following properties as its parameter:
 
-    func: a string that represents the code you want to execute
-    args: an array of arrays containing the arguments to pass to the func.
-    desc: a string that describes what the code does.
-    model: the name of the OpenAI model you want to use to execute the code.
-    postProcess: a function that processes the response from the OpenAI API.
+- `func`: a string that represents the code you want to execute
+- `args`: an array of arrays containing the arguments to pass to the func.
+- `desc`: a string that describes what the code does.
+- `model`: the name of the OpenAI model you want to use to execute the code.
+- `postProcess`: a function to parse the API response
 
-The getResult() method returns a Promise that resolves to the result of executing the code.
-
-In the example provided, the getResult() function is used to execute the code provided in the func property using the OpenAI gpt-3.5-turbo model. The args property contains two arrays, which are used as arguments for the function. The postProcess function is used to parse the JSON response returned by the OpenAI API.
-
-The result of executing the code is an array of arrays, where each sub-array contains pairs of elements from the input arrays based on their index. The output is logged to the console using console.log()
+The `getResult()` method returns a Promise that resolves to the result of executing the code.
 
 ## Contribution and Acknowledgments
 
