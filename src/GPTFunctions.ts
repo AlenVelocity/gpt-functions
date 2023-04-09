@@ -102,7 +102,12 @@ export class GPTFunctions {
      */
     public createFunction = async <T extends () => unknown>(options: CreateFucntionOptions<T> | string): Promise<T> => {
         if (typeof options === 'string') options = getDefaultCreateOptions(options)
-        const { model, func, desc, evaluate } = options as Required<CreateFucntionOptions<T>>
+        const {
+            model = 'gpt-3.5-turbo',
+            func,
+            desc,
+            evaluate = Function
+        } = options as Required<CreateFucntionOptions<T>>
         const response = await this.openai.createChatCompletion({
             model,
             messages: [
