@@ -108,5 +108,5 @@ The `getResult()` method returns a Promise that resolves to the result of execut
 ## Contribution and Acknowledgments
 
 If you find any issues or have any suggestions for improvement, please feel free to open an issue or a pull request.
-
-This project was made possible thanks to the [OpenAI API](openai.com)
+[OpenAI API](openai.com)
+[Torantulino/AI_Functions](https://github.com/Torantulino/AI-Functions)
