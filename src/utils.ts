@@ -16,9 +16,9 @@ export const getContentString = (func: string, description = '', type: 'res' | '
 }
 
 export const cleanCode = (code: string): string => {
-    const pattern = /```javascript\n([^]*?)\n```$/
+    const pattern = /(```javascript|```|```js)\n([^]*?)\n```/
     const match = code.match(pattern)
-    return match ? match[1] : code
+    return match ? match[2] : code
 }
 
 export const getDefaultCreateOptions = <T extends () => unknown>(desc: string) => {
