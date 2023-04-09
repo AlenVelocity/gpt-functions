@@ -16,5 +16,16 @@ export const getContentString = (func: string, description = '', type: 'res' | '
 }
 
 export const cleanCode = (code: string): string => {
-    return code.replace(/(```|`{3}js|`{3}javascript)/g, '')
+    const pattern = /```javascript\n([^]*?)\n```$/
+    const match = code.match(pattern)
+    return match ? match[1] : code
+}
+
+export const getDefaultCreateOptions = <T extends () => unknown>(desc: string) => {
+    return {
+        desc,
+        func: '() => ()',
+        model: 'gpt-3.5-turbo',
+        evaluate: Function as unknown as (...args: string[]) => T
+    }
 }
